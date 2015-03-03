@@ -149,29 +149,22 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 				super.processMouseEvent(event);
 
 				if (event.isPopupTrigger()) {
-					// 右クリックがされた場合
 					if (!event.isControlDown() && !event.isShiftDown()) {
-						// Ctrl も Shift も押されていない場合
-
-						// クリックされた行の取得
 						Point origin = event.getPoint();
 						int row = rowAtPoint(origin);
 
 						if (!isRowSelected(row)) {
-							// この行が選択されていない場合
-							// すべての選択を解除
 							clearSelection();
 						}
 
 						if (row != -1) {
-							// クリックされた行を選択された状態にする
 							addRowSelectionInterval(row, row);
 						}
 					}
 
 					this.editingStopped(new ChangeEvent(this));
 
-					// ポップアップメニューの表示
+					
 					this.pupupMenu.show(event.getComponent(), event.getX(),
 							event.getY());
 				}
@@ -634,11 +627,9 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 	}
 
 	/**
-	 * カラムテーブルの選択されている部分をコピーします。
 	 */
 	private void copyToClipboard() {
 
-		// 選択されている行を取得
 		int[] selectedRows = this.getSelection();
 
 		if (selectedRows.length == 0) {
@@ -646,16 +637,6 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 		}
 
 		StringBuilder builder = new StringBuilder();
-
-		// 全てが選択されている場合はヘッダもコピー
-		// if (selectedRows.length == this.editColumnTable.getItemCount()) {
-		// for (TableColumn c : this.editColumnTable.getColumns()) {
-		// builder.append(c.getText());
-		// builder.append("\t");
-		// }
-		// builder.deleteCharAt(builder.length() - 1);
-		// builder.append("\r\n");
-		// }
 
 		int columnCount = this.getColumnCount();
 
@@ -674,9 +655,6 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 		clipboard.setContents(new StringSelection(builder.toString()), this);
 	}
 
-	/**
-	 * カラムテーブルにクリップボードの内容を貼り付けます。
-	 */
 	private int pasteFromClipboard(boolean insert) {
 		int count = 0;
 		if (this.getSelection().length == 0) {
@@ -685,7 +663,6 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 
 		int row = this.getSelection()[0];
 
-		// クリップボードから読み込み
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
 		Transferable transferable = clipboard.getContents(this);
@@ -766,12 +743,6 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 
 					cutMenu.addActionListener(new ActionListener() {
 
-						/**
-						 * 「切り取り」メニュー選択時処理
-						 * 
-						 * @param even
-						 *            イベント
-						 */
 						public void actionPerformed(ActionEvent even) {
 							cutRows();
 						}
@@ -786,12 +757,6 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 
 				copyMenu.addActionListener(new ActionListener() {
 
-					/**
-					 * 「コピー」メニュー選択時処理
-					 * 
-					 * @param even
-					 *            イベント
-					 */
 					public void actionPerformed(ActionEvent even) {
 						copyRows();
 					}
@@ -807,12 +772,6 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 
 					pasteMenu.addActionListener(new ActionListener() {
 
-						/**
-						 * 「貼り付け」メニュー選択時処理
-						 * 
-						 * @param even
-						 *            イベント
-						 */
 						public void actionPerformed(ActionEvent even) {
 							pasteRows();
 						}
@@ -831,12 +790,6 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 
 				insertMenu.addActionListener(new ActionListener() {
 
-					/**
-					 * 「挿入」メニュー選択時処理
-					 * 
-					 * @param even
-					 *            イベント
-					 */
 					public void actionPerformed(ActionEvent even) {
 						insertRow();
 					}
@@ -852,12 +805,6 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 
 					insertPasteMenu.addActionListener(new ActionListener() {
 
-						/**
-						 * 「挿入 して貼り付け」メニュー選択時処理
-						 * 
-						 * @param even
-						 *            イベント
-						 */
 						public void actionPerformed(ActionEvent even) {
 							insertAndPasteRows();
 						}
@@ -872,13 +819,7 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 
 				deleteMenu.addActionListener(new ActionListener() {
 
-					/**
-					 * 「削除」メニュー選択時処理
-					 * 
-					 * @param even
-					 *            イベント
-					 */
-					public void actionPerformed(ActionEvent even) {
+						public void actionPerformed(ActionEvent even) {
 						deleteRows();
 					}
 
@@ -1037,24 +978,20 @@ public class RowHeaderTable extends JScrollPane implements ClipboardOwner {
 	}
 
 	private void copyRows() {
-		// テーブルからクリップボードへコピー
 		copyToClipboard();
 	}
 
 	private void cutRows() {
-		// テーブルからクリップボードへコピー
 		copyToClipboard();
 		removeSelectedRows();
 	}
 
 	private void pasteRows() {
-		// 貼り付け
 		int[] selectedRows = getSelection();
 		if (selectedRows.length == 0) {
 			return;
 		}
 
-		// クリップボードからテーブルへ貼り付け
 		int count = pasteFromClipboard(false);
 
 		table.clearSelection();

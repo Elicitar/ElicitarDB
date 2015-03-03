@@ -562,9 +562,9 @@ public class SqlType implements Serializable {
 		msg.append("\n");
 
 		if (targetDb == null) {
-			msg.append(errorCount + " 個の型が変換できませんでした。\n");
-			msg.append(errorCount2 + " 個の数字型の指定が不足しています。\n");
-			msg.append(errorCount3 + " 個の数字型の指定が余分です。\n");
+			msg.append(errorCount + "�\n");
+			msg.append(errorCount2 + " �\n");
+			msg.append(errorCount3 + " �\n");
 		}
 
 		System.out.println(msg.toString());
