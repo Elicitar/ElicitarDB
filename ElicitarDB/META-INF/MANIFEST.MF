@@ -244,3 +244,6 @@ Export-Package: org.insightech.er,
  org.insightech.er.util.io,
  org.insightech.er.wizard,
  org.insightech.er.wizard.page
+Bundle-ClassPath: lib/poi-3.11-20141221.jar,
+ .,
+ lib/commons-codec-1.9.jar

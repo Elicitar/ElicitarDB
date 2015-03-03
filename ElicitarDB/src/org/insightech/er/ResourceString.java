@@ -53,7 +53,7 @@ public class ResourceString {
 	public static String getResourceString(String key, String[] args) {
 		try {
 			String string = resource.getString(key);
-			string = MessageFormat.format(string, args);
+			string = MessageFormat.format(string, (Object)args);
 			// string = string.replaceAll("\\\\r\\\\n", "\r\n");
 
 			return string;
