@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/ElicitarDBfeature_1.0.0.201503031603.jar" id="ElicitarDBfeature" version="1.0.0.201503031603"/>
+   <feature url="features/ElicitarDB_1.0.0.jar" id="ElicitarDB" version="1.0.0"/>
 </site>
