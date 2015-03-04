@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="ElicitarDB"
-      label="ElicitarDB"
-      version="1.0.0"
+      id="ElicitarDBfeature"
+      label="ElicitarDBfeature"
+      version="1.0.0.qualifier"
       provider-name="Elicitar software">
 
-   <description url="http://elicitar.orgfree.com/elicitardb/">
-      Projeto de plugin eclipse para modelagem de banco de dados. Projeto baseado no projeto ERMaster.
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
    </description>
 
-   <copyright url="http://elicitar.orgfree.com/elicitardb/">
-      Projeto de plugin eclipse para modelagem de banco de dados. Projeto
-baseado no projeto ERMaster
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
    </copyright>
 
-   <license url="http://elicitar.orgfree.com/elicitardb/">
-      Projeto de modelagem para banco de dados baseado no projeto ERMaster(Fork). 
-Esta licença é GPL2.
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
    </license>
-
-   <url>
-      <update label="ElicitarDB" url="http://elicitar.orgfree.com/elicitardb/"/>
-      <discovery label="Elicitar" url="http://elicitar.orgfree.com/elicitardb/"/>
-   </url>
 
    <plugin
          id="ElicitarDB"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
